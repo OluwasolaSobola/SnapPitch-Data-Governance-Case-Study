@@ -8,7 +8,7 @@ As the platform evolved from a session-only architecture to a registered-user pl
 
 ## My Role
 
-**Data Governance Team Lead**  
+**Data Governance Team Lead (Internship)**  
 **EPI-Tech Internship Programme**
 
 I led the Data Governance team and contributed to the development and review of governance frameworks, controls, policies and recommendations for the SnapPitch platform.
