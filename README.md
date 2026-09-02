@@ -2,159 +2,257 @@
 
 ## Overview
 
-SnapPitch is an AI-powered platform designed to enable users to register and create an account, upload a CV, build a professional profile, generate tailored CVs, and save and manage their information.
+SnapPitch is an AI-powered CV platform that enables users to register, upload a CV, build a professional profile, generate tailored CVs, and save and manage their information.
 
-As the platform evolved from a session-only architecture to a registered-user platform with persistent data storage, stronger Data Governance became necessary to support the appropriate management and protection of users' personal information.
+The platform evolved from a session-only architecture to a registered-user model with persistent data storage. This introduced additional governance requirements around personal data, Data Quality, privacy, classification, access, retention, lifecycle management, governance risk and Responsible AI.
+
+This case study demonstrates how the Data Governance team responded through governance frameworks, controls, platform review, findings, recommendations and implementation assurance.
+
+---
 
 ## My Role
 
 **Data Governance Team Lead (Internship)**  
-**EPI-Tech Internship Programme**
+**EPI-Tech Internship Programme | 2026**
 
-I led the Data Governance team and contributed to the development and review of governance frameworks, controls, policies and recommendations for the SnapPitch platform.
+I led an eight-member Data Governance team supporting the SnapPitch project.
 
-The project involved collaboration across teams to translate Data Governance requirements into practical recommendations as the platform architecture and requirements evolved.
+My role included coordinating governance deliverables and review activities across:
 
-## Governance Scope
-
-Our Data Governance work covered:
-
-- Data Governance Framework
-- Data Quality Rules
-- Personally Identifiable Information (PII)
-- Data Classification & Sensitivity
-- Privacy Governance
-- Authentication & Access Controls
+- Data Governance
+- Data Quality
+- Privacy
+- Data Classification
 - Data Lifecycle Management
 - Data Retention
+- Access Governance
 - Governance Risk
-- AI Governance
-- Governance Oversight
+- Responsible AI
+
+I worked collaboratively with Software Engineering and wider project stakeholders as the platform architecture and requirements evolved.
+
+The Data Governance team defined and reviewed governance requirements, documented findings and recommendations, and sought assurance regarding implementation where appropriate. Technical implementation remained the responsibility of the relevant technical teams.
+
+---
+
+## Governance Challenge
+
+The move from session-only processing to persistent user accounts meant that SnapPitch would retain and process user profile information and uploaded CVs.
+
+This increased the importance of controls for:
+
+- Personally Identifiable Information (PII)
+- Data Quality
+- Data Classification & Sensitivity
+- Privacy & Consent
+- Authentication & Access
+- Data Storage
+- Data Lifecycle
+- Retention & Deletion
+- Monitoring & Audit
+- Governance Risk
+- AI Processing & Transparency
+
+The governance framework was updated to reflect the evolving platform architecture.
+
+---
 
 ## Key Governance Deliverables
 
-The team developed and reviewed governance artefacts including:
+The Data Governance team developed and reviewed governance artefacts including:
 
-### Governance Framework
-
+### Governance & Data Management
 - Data Governance Framework
+- Data Inventory
+- Data Dictionary
+- Business Glossary
 - Governance Responsibilities
 - Governance Implementation Requirements
 
-### Privacy & Compliance
+### Data Quality
+- Data Quality Assessment
+- Data Quality Dimensions
+- Data Quality Rules
+- Validation Requirements
 
+### Privacy & Lifecycle
+- Data Classification Framework
 - Privacy Policy
 - Privacy Notice
 - Cookies Consent Notice
-- Terms of Use
-
-### Data Governance & Quality
-
-- Data Classification Framework
-- Data Quality Rules
 - Data Lifecycle Governance
 - Data Retention Schedule
 
-### Risk, Security & Responsible AI
-
-- AI Governance Review
+### Risk, Access & Responsible AI
+- AI Governance Framework / Review
 - Governance Risk Register
 - Incident Response & Breach Escalation
+- Authentication & Access Governance
 - Administrative & Developer Access Policy
+- Monitoring & Audit Requirements
+
+---
+
+## Data Quality Approach
+
+Data Quality was incorporated into the governance framework using dimensions including:
+
+- Accuracy
+- Completeness
+- Consistency
+- Validity
+- Relevance
+- Timeliness
+- Integrity
+- Accessibility
+
+These principles were translated into practical requirements including valid email structures, mandatory field completion, supported CV upload formats, maximum upload size requirements, authentication before uploads and validation of submitted information.
+
+The team subsequently reviewed the user-facing platform against governance and Data Quality expectations.
+
+Testing identified weaknesses in validation across some input fields where values inconsistent with expected formats or data types could be accepted.
+
+This created potential risks to profile accuracy, reporting, analytics and downstream processing.
+
+The Data Governance team recommended strengthening validation through appropriate field-level rules, format requirements, mandatory controls and user-facing error handling.
+
+---
 
 ## Governance Review
 
-A governance review of the SnapPitch platform assessed areas including:
+The team conducted an end-to-end governance review covering:
 
 - User Registration
 - Resume Upload
 - Profile Creation
+- Work Experience
 - Skills Management
 - Dashboard
 - Account Settings
 - Privacy & Security
 - Governance Controls
 
-The objective was to assess alignment with Data Governance principles including privacy, transparency, security and data quality.
+The review considered data collection practices, privacy and security controls, Data Quality and alignment with previously developed governance requirements.
 
-## Key Governance Observations
+---
 
-The review identified several areas requiring further attention:
+## Key Findings & Recommendations
 
-1. Privacy information was not displayed before registration.
-2. Transparency around resume processing was limited.
-3. Email verification was not enforced.
-4. No cookie consent banner was observed.
-5. Some input fields had weak data validation.
-6. Google authentication functionality required clarification.
+### 1. Privacy Information
+**Finding:** Privacy information was not observed before personal information was collected during registration.
 
-## Recommendations
+**Recommendation:** Display appropriate privacy information before or at the point of data collection.
 
-Recommendations included:
+### 2. Resume Processing Transparency
+**Finding:** Users had limited information explaining how uploaded CVs were processed, whether AI was involved, how long information would be retained and how uploaded information could be removed.
 
-- Display the Privacy Notice before registration.
-- Improve transparency around resume processing.
-- Implement mandatory email verification.
-- Introduce cookie consent where applicable.
-- Strengthen input validation controls.
-- Explain why five skills are required.
-- Confirm Google authentication functionality.
+**Recommendation:** Improve transparency around CV processing, AI use, retention and deletion.
 
-The team also requested confirmation of implementation across areas including:
+### 3. Email Verification
+**Finding:** Email verification was not enforced during testing.
+
+**Risk:** Invalid or unauthorised email addresses could affect account integrity and Data Quality.
+
+**Recommendation:** Implement mandatory email ownership verification.
+
+### 4. Cookie Management
+**Finding:** No cookie consent banner was observed during testing.
+
+**Recommendation:** Confirm cookie usage and introduce an appropriate consent mechanism where non-essential cookies are used.
+
+### 5. Input Validation
+**Finding:** Some input fields accepted information inconsistent with expected formats or data types.
+
+**Risk:** Poor-quality information could affect user profiles, reporting, analytics and downstream processing.
+
+**Recommendation:** Strengthen validation controls across relevant fields.
+
+### 6. Google Authentication
+**Finding:** Google authentication functionality required clarification during review.
+
+**Recommendation:** Confirm whether the functionality was intended for the relevant release and test/address implementation where applicable.
+
+---
+
+## Architecture-to-Governance Thinking
+
+| Platform Area | Governance Consideration | Governance Response |
+|---|---|---|
+| PostgreSQL / Persistent Profiles | Stored personal data | Classification, access, lifecycle and retention requirements |
+| CV / Resume Storage | PII exposure and retention | Storage, access, privacy and deletion requirements |
+| Authentication & RBAC | Unauthorised access | Authentication and access-governance requirements |
+| AI / LLM Processing | Privacy, transparency and responsible use | AI governance, transparency and oversight |
+| Application Monitoring | Sensitive information in logs | Monitoring, access and retention considerations |
+
+This helped connect governance requirements with the way information moved through and was processed by the platform.
+
+---
+
+## Implementation Assurance
+
+The Data Governance team requested confirmation or supporting evidence regarding implementation of:
 
 - Governance artefacts
-- Encryption
+- Encryption of uploaded resumes
 - Role-Based Access Control (RBAC)
-- Audit Logging
-- Data Retention
-- AI Governance
+- Audit logging
+- Data Retention Schedule
+- AI governance controls
+
+This distinction was important: the Governance team defined, reviewed and challenged requirements, while technical implementation remained the responsibility of the relevant technical teams.
+
+---
+
+## Value Delivered
+
+The Data Governance team's contribution helped to:
+
+- Establish a governance foundation for the platform
+- Develop governance policies, standards and controls
+- Integrate Data Quality requirements into platform governance
+- Conduct a structured governance review
+- Identify privacy, Data Quality and transparency gaps
+- Document governance findings and recommendations
+- Identify governance risks and recommend controls to support risk reduction
+- Support Responsible AI governance
+- Establish areas requiring implementation assurance
+- Support continued governance improvement as the platform evolved
+
+---
 
 ## Challenges & Lessons Learned
 
 ### Challenges
-
-- Platform architecture changed during development.
-- Governance documentation required updating.
-- Collaboration was required across multiple teams.
-- Delivery operated within time constraints.
+- Platform architecture changed during development
+- Governance documentation had to evolve with technical requirements
+- Governance required collaboration across multiple project teams
+- Delivery operated within project time constraints
 
 ### Lessons Learned
-
-- Governance should be embedded from the beginning.
-- Cross-functional collaboration is essential.
-- Documentation supports accountability.
-- Data Governance is a continuous process rather than a one-time activity.
-
-## Value Delivered
-
-The Data Governance team's contribution helped:
-
-- Establish a governance foundation for the platform.
-- Develop governance policies and standards.
-- Conduct a structured governance review.
-- Identify governance improvement opportunities.
-- Strengthen privacy and transparency.
-- Support Responsible AI governance.
-- Reduce governance risks.
-- Support future platform growth.
-
-## Full Case Study
-
-A detailed portfolio version of the project is available here:
-
-[View the SnapPitch Data Governance & Data Quality Case Study](./SnapPitch_Data_Governance_Data_Quality_Case_Study.pdf)
-
-## Core Competencies Demonstrated
-
-`Data Governance` `Data Quality` `Data Management` `Data Privacy`  
-`Data Classification` `Data Lifecycle Management` `Data Retention`  
-`Governance Risk & Controls` `Responsible AI` `AI Governance`  
-`Stakeholder Collaboration` `Governance Documentation`
+- Data Governance should be considered early in product development
+- Governance requirements must evolve when architecture changes
+- Data Quality needs both documented rules and practical validation
+- Cross-functional collaboration is essential
+- Documentation creates accountability and traceability
+- Defining a control is different from confirming its implementation
+- Governance is a continuous process rather than a one-time activity
 
 ---
 
-### About Me
+## Core Competencies Demonstrated
 
-I am building my career around **Data Governance, Data Quality and Data Management**, with analytics and Responsible AI capabilities supporting my approach to trusted, well-governed data.
+**Data Governance | Data Quality | Data Management | Data Privacy | Data Classification | Data Lifecycle Management | Data Retention | Business Glossary | Data Dictionary | Governance Risk & Controls | Responsible AI | AI Governance | Governance Review | Stakeholder Collaboration | Governance Documentation**
 
-My wider portfolio includes practical projects using SQL, Power BI, Tableau and Excel for data analysis, data quality, reporting and business intelligence.
+---
+
+## Full Case Study
+
+The SnapPitch Data Governance Case Study PDF in this repository provides a concise visual summary of the project, governance approach, Data Quality work, review findings and recommendations.
+
+---
+
+## About Me
+
+I am a Data Governance and Data Quality professional with an analytical background and practical experience supporting governance frameworks, controls, Data Quality practices and Responsible AI across digital and AI-enabled environments.
+
+My wider portfolio demonstrates experience across Data Management, Data Stewardship, Master Data Management concepts, SQL-based Data Quality analysis, Power BI, Tableau and Excel.
